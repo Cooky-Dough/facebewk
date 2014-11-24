@@ -85,7 +85,9 @@
 			<p> {content} </p>
 			<p> {datum} </p>
 			<p> gepost door: <a href = "profiel.php?actie=view&email={email}">{voornaam} {achternaam}</a></p>
+			<!-- START BLOCK : likes -->
 			<p> Aantal likes: {LIKES}.
+			<!-- END BLOCK : likes -->
 			<!-- START BLOCK : like -->
 			<p> <a href = "de%20muur.php?actie=likepost&id={ID}&type=post">Like.</a></p>
 			<!-- END BLOCK : like -->
@@ -102,8 +104,17 @@
 				<p> {content} </p>
 				<p> {datum} </p>
 				<p> gepost door: <a href = "profiel.php?actie=view&email={email}">{voornaam} {achternaam}</a></p>
+				<!-- START BLOCK : LIKES2 -->
+				<p> Aantal likes: {LIKES2}.
+				<!-- END BLOCK : LIKES2 -->
+				<!-- START BLOCK : like2 -->
+				<p> <a href = "de%20muur.php?actie=likepost&id={ID}&type=comment">Like.</a></p>
+				<!-- END BLOCK : like2 -->
+				<!-- START BLOCK : dislike2 -->
+				<p> <a href = "de%20muur.php?actie=dislikepost&id={ID}&type=comment">Dislike.</a></p>			
+				<!-- END BLOCK : dislike2 -->
 				<p><a href = "de%20muur.php?actie=commentopcomment&id={ID}"> Comment </a></p>
-			<!-- START BLOCK : edit2 -->
+				<!-- START BLOCK : edit2 -->
 				<p><a href = "de%20muur.php?actie=commentwijzigen&id={ID}">Comment editen. </a> </p>
 				<p><a href = "de%20muur.php?actie=commentdelete&id={ID}">Comment deleten.</a></p>
 			<!-- END BLOCK : edit2 -->	
@@ -113,7 +124,16 @@
 				<p> {content} </p>
 				<p> {datum} </p>
 				<p> gepost door: <a href = "profiel.php?actie=view&email={email}">{voornaam} {achternaam}</a></p>
-			<!-- START BLOCK : edit3 -->
+				<!-- START BLOCK : LIKES3 -->
+				<p> Aantal likes: {LIKES3}.
+				<!-- END BLOCK : LIKES3 -->
+				<!-- START BLOCK : like3 -->
+				<p> <a href = "de%20muur.php?actie=likepost&id={ID}&type=comment">Like.</a></p>
+				<!-- END BLOCK : like3 -->
+				<!-- START BLOCK : dislike3 -->
+				<p> <a href = "de%20muur.php?actie=dislikepost&id={ID}&type=comment">Dislike.</a></p>			
+				<!-- END BLOCK : dislike3 -->
+				<!-- START BLOCK : edit3 -->
 				<p><a href = "de%20muur.php?actie=commentwijzigen&id={ID}">Comment editen. </a> </p>
 				<p><a href = "de%20muur.php?actie=commentdelete&id={ID}">Comment deleten.</a></p>
 			<!-- END BLOCK : edit3 -->	

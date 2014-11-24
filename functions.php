@@ -104,6 +104,7 @@ global $db;
 						$tpl->assign("voornaam", $row2["voornaam"]);
 						$tpl->assign("achternaam", $row2["achternaam"]);
 						$tpl->assign("ID", $commentid);
+						like($row2, $tpl, $groep_id, 'LIKES2', 'like2', 'dislike2');
 							if ($row2['gebruikerid'] == $id2 or $groep_id == '1') {
 								$tpl->newBlock('edit2');
 								$tpl->assign("ID", $row2["id"]);
@@ -122,6 +123,7 @@ global $db;
 								$tpl->assign("voornaam", $row3["voornaam"]);
 								$tpl->assign("achternaam", $row3["achternaam"]);
 								$tpl->assign("ID", $commentid);
+								like($row3, $tpl, $groep_id, 'LIKES3', 'like3', 'dislike3');
 								if ($row2['gebruikerid'] == $id2 or $groep_id == '1') {
 									$tpl->newBlock('edit3');
 									$tpl->assign("ID", $row3["id"]);
@@ -139,4 +141,34 @@ global $db;
 						$tpl->assign("content", "Comment is verwijderd");
 					}
 				}	
+			}
+
+
+			function like($row2, $tpl, $groep_id, $assign, $like, $dislike){
+				global $db;
+						$sql5 = "select * from `the wall`.`like` where type_id = " . $row2['id'] . " and type = 'comment'";
+						$stmt5 = $db->prepare($sql5);
+						$stmt5->execute();
+						$likeflag = NULL;
+						$count2 = 0;
+						while ($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) {
+							if($row5['gebruiker_id'] == $_SESSION['id']){
+								$likeflag=1;
+							}
+						}
+						$sql4="select count(*) as count from `the wall`.`like` where type_id = " . $row2['id'] . " and type = 'comment'";
+						$stmt4 = $db->prepare($sql4);
+						$stmt4->execute();
+						while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) {
+							$count2 = $row4['count'];
+						}
+						if($likeflag == 1){
+							$tpl->newBlock($dislike);
+							$tpl->assign("ID", $row2["id"]);
+						}else{
+							$tpl->newBlock($like);
+							$tpl->assign("ID", $row2["id"]);
+						}
+						$tpl->newBlock($assign);
+						$tpl->assign($assign, $count2);
 			}
