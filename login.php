@@ -84,7 +84,7 @@ if (isset($_GET['actie'])){
 
   		case 'uitloggen':
   			session_start();
-unset($_SESSION['id']);
+unset($_SESSION['id'], $_SESSION['email'], $_SESSION['groep_id']);
 header('location:login.php');
   			break;
 

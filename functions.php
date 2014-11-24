@@ -50,21 +50,31 @@ function post($tpl, $id, $groep_id){
 				$tpl->assign("achternaam", $row["achternaam"]);
 				$tpl->assign("ID", $row["id"]);
 				comment($row['id'], $tpl, $id, $groep_id);
-				$sql2 = "select *,count(*) as count from `the wall`.`like` where type_id = " . $row['id'] . " and type = 'post'";
+				$sql2 = "select * from `the wall`.`like` where type_id = " . $row['id'] . " and type = 'post'";
 				$stmt2 = $db->prepare($sql2);
 				$stmt2->execute();
+				$likeflag = NULL;
+				$count = 0;
 				while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
 					if($row2['gebruiker_id'] == $_SESSION['id']){
-						$tpl->newBlock('dislike');
-						$tpl->assign("ID", $row["id"]);
-
-					}else{
-						echo $row2['gebruiker_id'] . $_SESSION['id'] . "<br>";
-						$tpl->newBlock('like');
-						$tpl->assign("ID", $row["id"]);
+						$likeflag=1;
 					}
 				}
-				$tpl->assign('LIKES', $row2['count']);
+				$sql3="select count(*) as count from `the wall`.`like` where type_id = " . $row['id'] . " and type = 'post'";
+				$stmt3 = $db->prepare($sql3);
+				$stmt3->execute();
+				while ($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)) {
+					$count = $row3['count'];
+				}
+				if($likeflag == 1){
+					$tpl->newBlock('dislike');
+					$tpl->assign("ID", $row["id"]);
+				}else{
+					$tpl->newBlock('like');
+					$tpl->assign("ID", $row["id"]);
+				}
+				$tpl->newBlock('likes');
+				$tpl->assign('LIKES', $count);
 			if ($id == $row['gebruikerid'] or $groep_id == '1') {
 				$tpl->newBlock('edit');
 							$tpl->assign("ID", $row["id"]);
