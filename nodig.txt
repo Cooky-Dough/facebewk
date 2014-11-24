@@ -1,0 +1,6 @@
+bestanden nodig
+1x config
+4x php hoofd
+4x php database
+4x tpl
+1x css

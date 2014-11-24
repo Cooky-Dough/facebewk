@@ -1,0 +1,2 @@
+type_id = het id van de post / comment
+type = post of comment

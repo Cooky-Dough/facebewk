@@ -1,0 +1,5 @@
+1. inloggen / aanmaken
+2. profiel
+3. de muur
+4. admin
+
