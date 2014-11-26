@@ -38,7 +38,7 @@
 			<input type="submit" name = "submit" value = "wijzigen">
 		</p>
 		</form>
-					<p><a href="de%20muur.php"> terug naar de muur </a></p>
+					<p><a href="de%20muur.php">Terug naar de muur.</a></p>
 
 	<!-- END BLOCK : postedit -->
 		<!-- START BLOCK : commentedit -->

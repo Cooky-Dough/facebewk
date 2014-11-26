@@ -24,7 +24,7 @@ function check($email){
   			$stmt = $db->prepare($sql);
   			$stmt->bindParam(':email', $email, PDO::PARAM_STR);
   			$stmt->execute();
-  		return $stmt;
+  		  return $stmt;
 }
 
 function accounttoevoegen($data){
