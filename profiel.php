@@ -47,31 +47,7 @@ switch($actie){
 			comment($row['postid'], $apl, $_SESSION['id'], $_SESSION['groep_id']);
 		}
 	break;
-		default:
-	$tpl->newBlock('profiel');
-	$profiel = getProfiel($_SESSION['email']);
-	$tpl = showProfielForm($tpl, $profiel);
-		$tpl->newBlock('wijzig');
-		$stmt = view($_SESSION);
-			    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) 
-    { 	
-			$apl->newBlock('post');
-			$datum = date("H:i:s j F Y ",$row['datum']);	
-			$apl->assign("titel", $row["titel"]);
-			$apl->assign("email", $row["email"]);
-			$apl->assign("content", $row["content"]);
-			$apl->assign("datum", $datum);
-			$apl->assign("voornaam", $row["voornaam"]);
-			$apl->assign("achternaam", $row["achternaam"]);
-			$apl->assign("postid", $row["postid"]);
-			$apl->assign("ID", $row["postid"]);
-			if ($_SESSION['id'] == $row['gebruikerid'] or $_SESSION['groep_id'] == '1') {
-				$apl->newBlock('edit');
-							$apl->assign("postid", $row["postid"]);
-			}
-			comment($row['postid'], $apl, $_SESSION['id'], $_SESSION['groep_id']);
-		}
-		break;
+
 
 		case 'wachtwoord':
 			$profiel = getProfiel($_SESSION['email']);
@@ -131,6 +107,31 @@ switch($actie){
 			$tpl = showProfielForm($tpl, $row);
 		}
 			break;
+					default:
+	$tpl->newBlock('profiel');
+	$profiel = getProfiel($_SESSION['email']);
+	$tpl = showProfielForm($tpl, $profiel);
+		$tpl->newBlock('wijzig');
+		$stmt = view($_SESSION);
+			    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) 
+    { 	
+			$apl->newBlock('post');
+			$datum = date("H:i:s j F Y ",$row['datum']);	
+			$apl->assign("titel", $row["titel"]);
+			$apl->assign("email", $row["email"]);
+			$apl->assign("content", $row["content"]);
+			$apl->assign("datum", $datum);
+			$apl->assign("voornaam", $row["voornaam"]);
+			$apl->assign("achternaam", $row["achternaam"]);
+			$apl->assign("postid", $row["postid"]);
+			$apl->assign("ID", $row["postid"]);
+			if ($_SESSION['id'] == $row['gebruikerid'] or $_SESSION['groep_id'] == '1') {
+				$apl->newBlock('edit');
+							$apl->assign("postid", $row["postid"]);
+			}
+			comment($row['postid'], $apl, $_SESSION['id'], $_SESSION['groep_id']);
+		}
+		break;
 }
 
 $db = null;

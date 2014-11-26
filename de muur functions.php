@@ -74,11 +74,11 @@ function postsecurity($data){
 }
 function postdelete($data){
 	global $db;
-				$sql = "UPDATE post SET status = '0' where id = :id";
-				$stmt = $db->prepare($sql);
-			  $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-			  $stmt->execute();
-			  header('location:de%20muur.php');
+			$sql = "UPDATE post SET status = '0' where id = :id";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+			$stmt->execute();
+			header('location:de%20muur.php');
 }
 function postselect($data){
 	global $db;

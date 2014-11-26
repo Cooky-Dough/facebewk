@@ -137,5 +137,5 @@ case 'commenttoevoegen':
 		break;
 }
 $db = null;
-	$tpl->printToScreen();
+$tpl->printToScreen();
 }

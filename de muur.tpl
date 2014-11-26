@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<head><title>{HEAD}</title>
+	<head>
+		<title>{HEAD}</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
+	<div>
 	<p><a href="login.php?actie=uitloggen">Uitloggen!</a><p>
 	<p><a href="profiel.php?actie=all">Alle profielen tonen.</a></p>
 	<p><a href="profiel.php?actie=profiel">Welkom {voornaam} {achternaam}, Naar jou profiel.</a><p>
@@ -81,6 +84,7 @@
 		<p><a href="de%20muur.php"> terug naar de muur </a></p>
 	<!-- END BLOCK : commentopcomment -->
 	<!-- START BLOCK : post -->
+	<div class = "post">
 			<h2> {titel}</h2>
 			<p> {content} </p>
 			<p> {datum} </p>
@@ -142,6 +146,8 @@
 			<br>
 			</ul>
 			<!-- END BLOCK : comment -->
+			</p>
 		<!-- END BLOCK : post -->
+		</div>
 	</body>
 	</html>
